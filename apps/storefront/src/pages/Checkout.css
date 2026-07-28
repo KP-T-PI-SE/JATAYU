@@ -1,0 +1,335 @@
+.checkout-page {
+  padding-top: var(--spacing-2xl);
+  padding-bottom: var(--spacing-4xl);
+}
+
+.checkout-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 800px;
+  margin: 0 auto var(--spacing-4xl);
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  color: var(--color-text-secondary);
+}
+
+.step.active, .step.completed {
+  color: var(--color-text-primary);
+}
+
+.step-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  background-color: var(--color-bg-primary);
+}
+
+.step.active .step-circle {
+  background-color: var(--color-text-primary);
+  color: var(--color-text-light);
+  border-color: var(--color-text-primary);
+}
+
+.step.completed .step-circle {
+  background-color: var(--color-text-primary);
+  color: var(--color-text-light);
+  border-color: var(--color-text-primary);
+}
+
+.step-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+.step-line {
+  flex: 1;
+  height: 2px;
+  background-color: var(--color-border);
+  margin: 0 var(--spacing-sm);
+  margin-top: -20px;
+}
+
+.step-line.active {
+  background-color: var(--color-text-primary);
+}
+
+.checkout-layout {
+  display: flex;
+  gap: var(--spacing-4xl);
+}
+
+.checkout-form-section {
+  flex: 1.5;
+}
+
+.checkout-summary-section {
+  flex: 1;
+  background-color: var(--color-bg-secondary);
+  padding: var(--spacing-2xl);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: var(--spacing-xs);
+}
+
+.section-header h2, .shipping-method-section h2, .coupon-section h2 {
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+}
+
+.login-prompt {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+.login-prompt a {
+  color: var(--color-text-primary);
+  text-decoration: underline;
+}
+
+.form-desc {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-xl);
+}
+
+.address-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-3xl);
+}
+
+.form-row {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.form-row input, .form-row select {
+  flex: 1;
+  padding: 1rem;
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+}
+
+.form-row input:focus, .form-row select:focus {
+  outline: none;
+  border-color: var(--color-text-primary);
+}
+
+.shipping-method-section {
+  margin-bottom: var(--spacing-3xl);
+}
+
+.shipping-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.shipping-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--color-border);
+  padding: var(--spacing-lg);
+  cursor: pointer;
+  background-color: var(--color-bg-primary);
+}
+
+.shipping-option.active {
+  border-color: var(--color-text-primary);
+}
+
+.option-info {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+}
+
+.option-info input[type="radio"] {
+  margin-top: 4px;
+  accent-color: var(--color-text-primary);
+}
+
+.option-info strong {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.option-info p {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+}
+
+.option-price {
+  text-align: right;
+}
+
+.option-price span {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.option-price p {
+  font-size: 0.625rem;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+}
+
+.coupon-section {
+  margin-bottom: var(--spacing-3xl);
+}
+
+.checkout-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+.btn-continue {
+  padding: 1rem 3rem;
+}
+
+.summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.summary-header h3 {
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+}
+
+.mini-cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.mini-cart-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.mini-cart-item img {
+  width: 60px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.mini-item-details {
+  flex: 1;
+}
+
+.mini-item-details h4 {
+  font-size: 0.75rem;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.mini-item-details p {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+.mini-item-price {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.summary-totals {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.trust-badges {
+  margin-top: var(--spacing-2xl);
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  padding: var(--spacing-xl);
+}
+
+.trust-badge {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+}
+
+.badge-icon {
+  font-size: 1.5rem;
+}
+
+.trust-badge h4 {
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.trust-badge p {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+.payment-icons-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--color-border);
+  margin: var(--spacing-md) 0;
+}
+
+@media (max-width: 1024px) {
+  .checkout-layout {
+    flex-direction: column-reverse;
+  }
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+  }
+  
+  .checkout-actions {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+  
+  .btn-continue {
+    width: 100%;
+  }
+}
