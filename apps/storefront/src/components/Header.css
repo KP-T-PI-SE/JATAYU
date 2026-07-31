@@ -25,6 +25,12 @@
   gap: var(--spacing-sm);
 }
 
+.logo img {
+  /* This trick removes a white background and turns the logo GOLD */
+  filter: invert(1) sepia(1) saturate(500%) hue-rotate(5deg) brightness(1.1);
+  mix-blend-mode: screen;
+}
+
 .eagle-icon {
   color: var(--color-accent);
 }

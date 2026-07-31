@@ -22,12 +22,7 @@ const Footer = () => {
           <div className="footer-brand">
             <Link to="/" className="logo-link">
               <div className="logo">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="eagle-icon">
-                  <path d="M4 14l-2 4 4-2 4 4 1-5" />
-                  <path d="M20 14l2 4-4-2-4 4-1-5" />
-                  <path d="M12 2L9 9h6z" />
-                </svg>
-                <span className="logo-text">JATAYU</span>
+                <img src="/jatayu-word-logo.jpeg" alt="JATAYU" style={{ height: '60px' }} />
               </div>
             </Link>
             <p className="brand-tagline">
