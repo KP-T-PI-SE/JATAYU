@@ -1,9 +1,9 @@
-.women-page {
+.shop-page {
   background-color: var(--color-bg-primary);
   min-height: 100vh;
 }
 
-.women-hero {
+.shop-hero {
   position: relative;
   height: 40vh;
   min-height: 300px;
@@ -43,39 +43,39 @@
   z-index: 1;
 }
 
-.women-hero-text {
+.shop-hero-text {
   max-width: 600px;
 }
 
-.women-main {
+.shop-main {
   padding: var(--spacing-3xl) 0;
 }
 
-.women-grid {
+.shop-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--spacing-xl);
 }
 
 @media (max-width: 1024px) {
-  .women-grid {
+  .shop-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  .women-grid {
+  .shop-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--spacing-md);
   }
   
-  .women-hero {
+  .shop-hero {
     padding: var(--spacing-3xl) 0;
   }
 }
 
 @media (max-width: 480px) {
-  .women-grid {
+  .shop-grid {
     grid-template-columns: 1fr;
   }
 }

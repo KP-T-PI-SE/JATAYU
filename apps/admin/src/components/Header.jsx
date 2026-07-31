@@ -34,8 +34,7 @@ const Header = () => {
         
         <nav className={`nav-links ${isMobileMenuOpen ? 'open' : ''}`}>
           <Link to="/new" onClick={() => setIsMobileMenuOpen(false)}>NEW</Link>
-          <Link to="/men" onClick={() => setIsMobileMenuOpen(false)}>MEN</Link>
-          <Link to="/women" onClick={() => setIsMobileMenuOpen(false)}>WOMEN</Link>
+          <Link to="/shop" onClick={() => setIsMobileMenuOpen(false)}>SHOP</Link>
           <Link to="/collections" onClick={() => setIsMobileMenuOpen(false)}>COLLECTIONS</Link>
           <Link to="/about" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>ABOUT</Link>
         </nav>

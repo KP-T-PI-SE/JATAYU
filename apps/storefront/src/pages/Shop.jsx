@@ -2,32 +2,33 @@ import React, { useContext } from 'react';
 import ProductCard from '../components/ProductCard';
 import { ContentContext } from '../context/ContentContext';
 import { AdminContext } from '../context/AdminContext';
-import './Men.css';
+import './Shop.css';
 
-const Men = () => {
+const Shop = () => {
   const { content } = useContext(ContentContext);
   const { products } = useContext(AdminContext);
 
-  const menProducts = products.filter(p => p.category === 'Men');
+  // We are not filtering by category for the main shop page
+  const shopProducts = products;
 
   return (
-    <div className="men-page">
-      <div className="men-hero dark-section">
+    <div className="shop-page">
+      <div className="shop-hero dark-section">
         <div className="hero-bg">
-          <img src={content.men?.bannerImage || "/signature_zip_hoodie_1785054724510.png"} alt="Men's Collection Banner" />
+          <img src={content.shop?.bannerImage || "/signature_zip_hoodie_1785054724510.png"} alt="Shop Collection Banner" />
           <div className="hero-overlay"></div>
         </div>
         <div className="container hero-content">
-          <div className="men-hero-text">
-            <h1 className="page-title">{content.men?.title || "MEN'S COLLECTION"}</h1>
-            <p className="page-subtitle" style={{whiteSpace: 'pre-line'}}>{content.men?.subtitle || "Premium essentials and statement pieces. Designed for everyday resilience."}</p>
+          <div className="shop-hero-text">
+            <h1 className="page-title">{content.shop?.title || "SHOP COLLECTION"}</h1>
+            <p className="page-subtitle" style={{whiteSpace: 'pre-line'}}>{content.shop?.subtitle || "Premium essentials and statement pieces. Designed for everyday resilience."}</p>
           </div>
         </div>
       </div>
 
-      <div className="container men-main">
+      <div className="container shop-main">
         <div className="results-header">
-          <span>{menProducts.length} ITEMS</span>
+          <span>{shopProducts.length} ITEMS</span>
           <div className="results-actions">
             <select className="sort-select">
               <option>SORT BY: RECOMMENDED</option>
@@ -38,8 +39,8 @@ const Men = () => {
           </div>
         </div>
 
-        <div className="product-grid men-grid">
-          {menProducts.map(product => (
+        <div className="product-grid shop-grid">
+          {shopProducts.map(product => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
@@ -48,4 +49,4 @@ const Men = () => {
   );
 };
 
-export default Men;
+export default Shop;

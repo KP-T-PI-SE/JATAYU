@@ -46,8 +46,7 @@ const Footer = () => {
             <div className="link-column">
               <h4>SHOP</h4>
               <Link to="/shop">All Products</Link>
-              <Link to="/men">Men</Link>
-              <Link to="/women">Women</Link>
+
               <Link to="/new">New Arrivals</Link>
               <Link to="/collections">Collections</Link>
             </div>

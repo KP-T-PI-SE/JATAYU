@@ -71,15 +71,10 @@ const defaultContent = {
     lastUpdated: "January 1, 2026",
     content: "By accessing this website, you are agreeing to be bound by these website Terms and Conditions of Use, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws.\n\nUse License\nPermission is granted to temporarily download one copy of the materials (information or software) on JATAYU's website for personal, non-commercial transitory viewing only."
   },
-  men: {
-    title: "MEN'S COLLECTION",
+  shop: {
+    title: "SHOP COLLECTION",
     subtitle: "Premium essentials and statement pieces. Designed for everyday resilience.",
     bannerImage: "/signature_zip_hoodie_1785054724510.png"
-  },
-  women: {
-    title: "WOMEN'S COLLECTION",
-    subtitle: "Redefining streetwear with bold silhouettes and uncompromised comfort.",
-    bannerImage: "/raven_hoodie_back_1785054706044.png"
   },
   newArrivals: {
     title: "NEW ARRIVALS",

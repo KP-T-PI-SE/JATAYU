@@ -14,8 +14,7 @@ import Checkout from './pages/Checkout';
 import About from './pages/About';
 import Home from './pages/Home';
 import New from './pages/New';
-import Men from './pages/Men';
-import Women from './pages/Women';
+import Shop from './pages/Shop';
 import Account from './pages/Account';
 
 // Help Pages
@@ -43,8 +42,7 @@ function App() {
           <Route path="/" element={<StoreLayout />}>
             <Route index element={<Home />} />
             <Route path="new" element={<New />} />
-            <Route path="men" element={<Men />} />
-            <Route path="women" element={<Women />} />
+            <Route path="shop" element={<Shop />} />
             <Route path="wishlist" element={<Wishlist />} />
             <Route path="account" element={<Account />} />
             <Route path="search" element={<Search />} />

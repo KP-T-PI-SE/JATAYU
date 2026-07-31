@@ -138,8 +138,7 @@ const ContentManager = () => {
     press: { ...content.press },
     privacy: { ...content.privacy },
     terms: { ...content.terms },
-    men: { ...content.men },
-    women: { ...content.women },
+    shop: { ...content.shop },
     newArrivals: { ...content.newArrivals },
     collections: { ...content.collections },
     about: { ...content.about }
@@ -166,8 +165,7 @@ const ContentManager = () => {
     { id: 'home', label: 'Home Page' },
     { id: 'about', label: 'About Page' },
     { id: 'story', label: 'Our Story' },
-    { id: 'men', label: 'Men\'s Collection' },
-    { id: 'women', label: 'Women\'s Collection' },
+    { id: 'shop', label: 'Shop Collection' },
     { id: 'newArrivals', label: 'New Arrivals' },
     { id: 'collections', label: 'All Collections' },
     { id: 'shipping', label: 'Shipping' },
@@ -243,23 +241,13 @@ const ContentManager = () => {
             </div>
           )}
 
-          {activeTab === 'men' && (
+          {activeTab === 'shop' && (
             <div className="cms-form">
-              <h2 style={{marginBottom: 'var(--spacing-xl)', fontSize: '1.25rem'}}>Men's Collection Banner</h2>
-              {renderField('men', 'title', 'Title')}
-              {renderField('men', 'subtitle', 'Subtitle', true)}
-              {renderField('men', 'bannerImage', 'Banner Image URL')}
-              {renderFormActions('men')}
-            </div>
-          )}
-
-          {activeTab === 'women' && (
-            <div className="cms-form">
-              <h2 style={{marginBottom: 'var(--spacing-xl)', fontSize: '1.25rem'}}>Women's Collection Banner</h2>
-              {renderField('women', 'title', 'Title')}
-              {renderField('women', 'subtitle', 'Subtitle', true)}
-              {renderField('women', 'bannerImage', 'Banner Image URL')}
-              {renderFormActions('women')}
+              <h2 style={{marginBottom: 'var(--spacing-xl)', fontSize: '1.25rem'}}>Shop Collection Banner</h2>
+              {renderField('shop', 'title', 'Title')}
+              {renderField('shop', 'subtitle', 'Subtitle', true)}
+              {renderField('shop', 'bannerImage', 'Banner Image URL')}
+              {renderFormActions('shop')}
             </div>
           )}
 
