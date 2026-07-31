@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react';
 import ProductCard from '../components/ProductCard';
 import { AdminContext } from '../context/AdminContext';
+import { Search as SearchIcon, Lightbulb, Star, Clock, ShieldCheck } from 'lucide-react';
 import './Search.css';
 
 const Search = () => {
@@ -23,7 +24,7 @@ const Search = () => {
             </div>
             <div className="search-input-area">
               <div className="search-input-wrapper">
-                <span className="search-icon-inline">🔍</span>
+                <span className="search-icon-inline"><SearchIcon size={20} /></span>
                 <input 
                   type="text" 
                   value={searchQuery}
@@ -59,18 +60,6 @@ const Search = () => {
             </ul>
           </div>
 
-          <div className="filter-group">
-            <h4>GENDER</h4>
-            <label className="checkbox-label">
-              <input type="checkbox" checked readOnly /> Men
-            </label>
-            <label className="checkbox-label">
-              <input type="checkbox" /> Women
-            </label>
-            <label className="checkbox-label">
-              <input type="checkbox" /> Unisex
-            </label>
-          </div>
 
           <div className="filter-group">
             <h4>SIZE</h4>
@@ -156,19 +145,19 @@ const Search = () => {
           </div>
           <div className="help-features">
             <div className="help-feature">
-              <span>💡</span>
+              <span><Lightbulb size={24} /></span>
               <p>PERSONALIZED<br/>RECOMMENDATIONS</p>
             </div>
             <div className="help-feature">
-              <span>⭐</span>
+              <span><Star size={24} /></span>
               <p>EXCLUSIVE<br/>STYLIST PICKS</p>
             </div>
             <div className="help-feature">
-              <span>⏱️</span>
+              <span><Clock size={24} /></span>
               <p>FAST<br/>RESPONSE</p>
             </div>
             <div className="help-feature">
-              <span>🛡️</span>
+              <span><ShieldCheck size={24} /></span>
               <p>100% SECURE<br/>PRIVACY</p>
             </div>
           </div>
