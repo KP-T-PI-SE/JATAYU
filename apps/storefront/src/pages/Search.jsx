@@ -10,8 +10,15 @@ const Search = () => {
 
   const filteredProducts = products.filter(p => 
     p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-    p.category.toLowerCase().includes(searchQuery.toLowerCase())
+    (p.category && p.category.toLowerCase().includes(searchQuery.toLowerCase()))
   );
+
+  const categoryCounts = products.reduce((acc, product) => {
+    if (product.category) acc[product.category] = (acc[product.category] || 0) + 1;
+    return acc;
+  }, {});
+  const availableSizes = [...new Set(products.flatMap(p => p.sizes || []))].filter(Boolean);
+  const availableColors = [...new Set(products.flatMap(p => p.colors || []))].filter(Boolean);
 
   return (
     <div className="search-page">
@@ -51,38 +58,35 @@ const Search = () => {
           <div className="filter-group">
             <h4>CATEGORIES</h4>
             <ul>
-              <li>All Categories</li>
-              <li className="active"><span className="dot"></span> Hoodies & Sweatshirts <span>(56)</span></li>
-              <li>T-Shirts <span>(12)</span></li>
-              <li>Jackets <span>(8)</span></li>
-              <li>Tracksuits <span>(4)</span></li>
-              <li>Accessories <span>(3)</span></li>
+              <li className="active">All Categories <span>({products.length})</span></li>
+              {Object.entries(categoryCounts).map(([cat, count]) => (
+                <li key={cat}>{cat} <span>({count})</span></li>
+              ))}
             </ul>
           </div>
 
 
-          <div className="filter-group">
-            <h4>SIZE</h4>
-            <div className="size-grid">
-              <button className="size-btn">XS</button>
-              <button className="size-btn">S</button>
-              <button className="size-btn">M</button>
-              <button className="size-btn">L</button>
-              <button className="size-btn">XL</button>
-              <button className="size-btn">XXL</button>
+          {availableSizes.length > 0 && (
+            <div className="filter-group">
+              <h4>SIZE</h4>
+              <div className="size-grid">
+                {availableSizes.map(size => (
+                  <button key={size} className="size-btn">{size}</button>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
-          <div className="filter-group">
-            <h4>COLOR</h4>
-            <div className="color-grid">
-              <button className="color-btn active" style={{backgroundColor: '#1a1a1a'}}></button>
-              <button className="color-btn" style={{backgroundColor: '#5c5c5c'}}></button>
-              <button className="color-btn" style={{backgroundColor: '#636b53'}}></button>
-              <button className="color-btn" style={{backgroundColor: '#d1b894'}}></button>
-              <button className="color-btn add-btn">+</button>
+          {availableColors.length > 0 && (
+            <div className="filter-group">
+              <h4>COLOR</h4>
+              <div className="color-grid">
+                {availableColors.map(color => (
+                  <button key={color} className="color-btn" style={{backgroundColor: color}} title={color}></button>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           <div className="filter-group">
             <h4>FIT</h4>
