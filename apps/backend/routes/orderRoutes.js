@@ -4,6 +4,7 @@ import Product from '../models/Product.js';
 import Razorpay from 'razorpay';
 import crypto from 'crypto';
 import { protect, admin } from '../middleware/authMiddleware.js';
+import { sendOrderInvoice, sendAdminOrderNotification } from '../utils/emailService.js';
 
 const router = express.Router();
 
@@ -137,6 +138,21 @@ router.post('/verify-payment', protect, async (req, res) => {
     });
 
     const createdOrder = await order.save();
+    
+    // Send Invoice and Notifications
+    const adminEmail = process.env.ADMIN_EMAIL || 'admin@jatayustore.com';
+    const orderDetails = {
+      orderId: createdOrder._id,
+      customerName,
+      userEmail: req.user.email,
+      items,
+      total,
+      address
+    };
+    
+    sendOrderInvoice(req.user.email, orderDetails).catch(err => console.error("Invoice email failed", err));
+    sendAdminOrderNotification(adminEmail, orderDetails).catch(err => console.error("Admin notification failed", err));
+
     res.status(201).json(createdOrder);
 
   } catch (error) {

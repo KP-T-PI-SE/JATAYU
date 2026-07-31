@@ -7,6 +7,7 @@ import orderRoutes from './routes/orderRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import promoRoutes from './routes/promoRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
+import marketingRoutes from './routes/marketingRoutes.js';
 
 dotenv.config();
 
@@ -37,6 +38,11 @@ app.use('/api/orders', orderRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/promos', promoRoutes);
 app.use('/api/upload', uploadRoutes);
+app.use('/api/marketing', marketingRoutes);
+
+app.get('/', (req, res) => {
+  res.json({ message: 'JATAYU API is running...' });
+});
 
 app.get('/api', (req, res) => {
   res.json({ message: 'JATAYU API is running...' });

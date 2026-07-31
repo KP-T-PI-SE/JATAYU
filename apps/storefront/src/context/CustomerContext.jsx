@@ -30,9 +30,15 @@ export const CustomerProvider = ({ children }) => {
       });
       const data = await res.json();
       if (res.ok) {
+        if (data.requiresOtp) {
+          return { success: true, requiresOtp: true, email };
+        }
         setCurrentCustomer(data);
         return { success: true };
       } else {
+        if (data.requiresOtp) {
+           return { success: false, requiresOtp: true, email, error: data.message };
+        }
         return { success: false, error: data.message };
       }
     } catch (e) {
@@ -46,6 +52,28 @@ export const CustomerProvider = ({ children }) => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password })
+      });
+      const data = await res.json();
+      if (res.ok) {
+        if (data.requiresOtp) {
+          return { success: true, requiresOtp: true, email };
+        }
+        setCurrentCustomer(data);
+        return { success: true };
+      } else {
+        return { success: false, error: data.message };
+      }
+    } catch (e) {
+      return { success: false, error: 'Server error' };
+    }
+  };
+
+  const verifyOtp = async (email, otp) => {
+    try {
+      const res = await fetch(`${API_URL}/users/verify-otp`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, otp })
       });
       const data = await res.json();
       if (res.ok) {
@@ -68,6 +96,7 @@ export const CustomerProvider = ({ children }) => {
       currentCustomer,
       login,
       register,
+      verifyOtp,
       logout
     }}>
       {children}

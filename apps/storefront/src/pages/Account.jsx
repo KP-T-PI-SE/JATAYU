@@ -4,7 +4,7 @@ import { AdminContext } from '../context/AdminContext';
 import './Account.css';
 
 const Account = () => {
-  const { currentCustomer, login, register, logout } = useContext(CustomerContext);
+  const { currentCustomer, login, register, verifyOtp, logout } = useContext(CustomerContext);
   const { orders } = useContext(AdminContext);
   
   const [activeTab, setActiveTab] = useState('profile');
@@ -15,16 +15,40 @@ const Account = () => {
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [authError, setAuthError] = useState('');
+  const [showOtp, setShowOtp] = useState(false);
+  const [otp, setOtp] = useState('');
 
-  const handleAuth = (e) => {
+  const handleAuth = async (e) => {
     e.preventDefault();
     setAuthError('');
+    let res;
+    
+    if (showOtp) {
+       res = await verifyOtp(email, otp);
+       if (res.success) {
+         setShowOtp(false);
+         setOtp('');
+       } else {
+         setAuthError(res.error);
+       }
+       return;
+    }
+
     if (authMode === 'login') {
-      const res = login(email, password);
-      if (!res.success) setAuthError(res.error);
+      res = await login(email, password);
     } else {
-      const res = register(name, email, password);
-      if (!res.success) setAuthError(res.error);
+      res = await register(name, email, password);
+    }
+    
+    if (!res.success) {
+      if (res.requiresOtp) {
+        setShowOtp(true);
+        setAuthError(res.error || 'Please verify your OTP.');
+      } else {
+        setAuthError(res.error);
+      }
+    } else if (res.requiresOtp) {
+      setShowOtp(true);
     }
   };
 
@@ -118,35 +142,52 @@ const Account = () => {
           {authError && <div style={{color: 'red', marginBottom: '1rem', textAlign: 'center'}}>{authError}</div>}
           
           <form onSubmit={handleAuth} className="settings-form">
-            {authMode === 'register' && (
-              <div className="form-group">
-                <label>Full Name</label>
-                <input type="text" required value={name} onChange={e => setName(e.target.value)} />
-              </div>
+            {showOtp ? (
+              <>
+                <div className="form-group">
+                  <label>Verification Code</label>
+                  <input type="text" required value={otp} onChange={e => setOtp(e.target.value)} placeholder="6-digit code" maxLength="6" />
+                </div>
+                <button type="submit" className="btn-primary" style={{width: '100%', marginBottom: '1rem'}}>
+                  VERIFY OTP
+                </button>
+                <button type="button" onClick={() => setShowOtp(false)} style={{background: 'none', border: 'none', textDecoration: 'underline', cursor: 'pointer', fontFamily: 'inherit', width: '100%', textAlign: 'center'}}>
+                  Back
+                </button>
+              </>
+            ) : (
+              <>
+                {authMode === 'register' && (
+                  <div className="form-group">
+                    <label>Full Name</label>
+                    <input type="text" required value={name} onChange={e => setName(e.target.value)} />
+                  </div>
+                )}
+                <div className="form-group">
+                  <label>Email Address</label>
+                  <input type="email" required value={email} onChange={e => setEmail(e.target.value)} />
+                </div>
+                <div className="form-group">
+                  <label>Password</label>
+                  <input type="password" required value={password} onChange={e => setPassword(e.target.value)} />
+                </div>
+                
+                <button type="submit" className="btn-primary" style={{width: '100%', marginBottom: '1rem'}}>
+                  {authMode === 'login' ? 'SIGN IN' : 'REGISTER'}
+                </button>
+                
+                <p style={{textAlign: 'center'}}>
+                  {authMode === 'login' ? "Don't have an account? " : "Already have an account? "}
+                  <button 
+                    type="button" 
+                    style={{background: 'none', border: 'none', textDecoration: 'underline', cursor: 'pointer', fontFamily: 'inherit'}}
+                    onClick={() => setAuthMode(authMode === 'login' ? 'register' : 'login')}
+                  >
+                    {authMode === 'login' ? 'Create one' : 'Log in'}
+                  </button>
+                </p>
+              </>
             )}
-            <div className="form-group">
-              <label>Email Address</label>
-              <input type="email" required value={email} onChange={e => setEmail(e.target.value)} />
-            </div>
-            <div className="form-group">
-              <label>Password</label>
-              <input type="password" required value={password} onChange={e => setPassword(e.target.value)} />
-            </div>
-            
-            <button type="submit" className="btn-primary" style={{width: '100%', marginBottom: '1rem'}}>
-              {authMode === 'login' ? 'SIGN IN' : 'REGISTER'}
-            </button>
-            
-            <p style={{textAlign: 'center'}}>
-              {authMode === 'login' ? "Don't have an account? " : "Already have an account? "}
-              <button 
-                type="button" 
-                style={{background: 'none', border: 'none', textDecoration: 'underline', cursor: 'pointer', fontFamily: 'inherit'}}
-                onClick={() => setAuthMode(authMode === 'login' ? 'register' : 'login')}
-              >
-                {authMode === 'login' ? 'Create one' : 'Log in'}
-              </button>
-            </p>
           </form>
         </div>
       </div>

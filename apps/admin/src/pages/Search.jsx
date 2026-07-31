@@ -19,6 +19,7 @@ const Search = () => {
   }, {});
   const availableSizes = [...new Set(products.flatMap(p => p.sizes || []))].filter(Boolean);
   const availableColors = [...new Set(products.flatMap(p => p.colors || []))].filter(Boolean);
+  const availableFits = [...new Set(products.flatMap(p => p.fits || []))].filter(Boolean);
 
   return (
     <div className="search-page">
@@ -88,21 +89,16 @@ const Search = () => {
             </div>
           )}
 
-          <div className="filter-group">
-            <h4>FIT</h4>
-            <label className="checkbox-label">
-              <input type="checkbox" /> Oversized
-            </label>
-            <label className="checkbox-label">
-              <input type="checkbox" /> Regular
-            </label>
-            <label className="checkbox-label">
-              <input type="checkbox" /> Relaxed
-            </label>
-            <label className="checkbox-label">
-              <input type="checkbox" /> Slim
-            </label>
-          </div>
+          {availableFits.length > 0 && (
+            <div className="filter-group">
+              <h4>FIT</h4>
+              {availableFits.map(fit => (
+                <label key={fit} className="checkbox-label">
+                  <input type="checkbox" /> {fit}
+                </label>
+              ))}
+            </div>
+          )}
         </aside>
 
         <main className="results-area">

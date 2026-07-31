@@ -17,6 +17,7 @@ const productSchema = new mongoose.Schema({
   description: { type: String, default: '' },
   colors: [{ type: String }],
   sizes: [{ type: String }],
+  fits: [{ type: String }],
   badges: [{ type: String }],
   materials: [{ type: String }]
 }, {
