@@ -23,7 +23,7 @@ const Footer = () => {
             <Link to="/" className="logo-link">
               <div className="logo">
                 <img src="/jatayu-logo.jpeg" alt="JATAYU Admin Icon" style={{ height: '60px' }} />
-                <img src="/jatayu-word-logo.jpeg" alt="JATAYU Admin" style={{ height: '60px' }} />
+                <img src="/jatayu-word-logo.jpeg" alt="JATAYU Admin" style={{ height: '40px' }} />
               </div>
             </Link>
             <p className="brand-tagline">
